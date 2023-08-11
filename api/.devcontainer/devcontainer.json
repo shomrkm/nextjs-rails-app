@@ -1,0 +1,17 @@
+{
+  "name": "rails-api",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        }
+      },
+    }
+  },
+  "service": "api",
+  "workspaceFolder": "/api",
+  "shutdownAction": "stopCompose"
+}
