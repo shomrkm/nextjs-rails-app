@@ -3,11 +3,12 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - postgres_volume:/var/lib/postgresql/data
     environment:
       # POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+    restart: always
   redis:
     image: redis
     ports:
@@ -26,7 +27,10 @@ services:
       - redis
     environment:
       REDIS_URL: redis://redis:6379
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     tty: true
 
 volumes:
   redis:
+  postgres_volume:

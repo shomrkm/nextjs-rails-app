@@ -4,11 +4,11 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :provider, null: false
       t.string :uid, null: false
       t.string :name, null: false
-      t.string :image_url, null: false
+      t.string :email, null: false
+      t.string :image_url
 
-      t.timestamps
+      t.datetime "created_at", null: false
+      t.datetime "updated_at", null: false
     end
-
-    add_index :users, %i[provider uid], unique: true
   end
 end
