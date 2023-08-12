@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
 
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
+
+      add_index :users, [:provider, :uid], unique: true
     end
   end
 end
