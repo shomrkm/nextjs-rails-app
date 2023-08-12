@@ -20,8 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <Header />
-          {children}
+          <div className="ml-4 mt-24 relative">
+            <Header />
+            {children}
+          </div>
         </NextAuthProvider>
       </body>
     </html>
