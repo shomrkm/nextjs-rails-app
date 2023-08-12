@@ -14,7 +14,14 @@ export const Header = () => {
       <div className="flex items-center">
         {session ? (
           <div className="flex justify-end items-center">
-            <p className="mr-4 text-gray-600">{session.user?.email}</p>
+            <p className="text-gray-600">{session.user?.email}</p>
+            <Image
+              className="rounded-full mx-4"
+              src={session.user?.image!}
+              alt=""
+              width={40}
+              height={40}
+            />
             <LogoutButton />
           </div>
         ) : (
