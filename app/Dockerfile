@@ -4,14 +4,14 @@ ENV PROJECT_ROOTDIR /app
 
 WORKDIR $PROJECT_ROOTDIR
 
-# RUN apk update && apk upgrade && apk add --no-cache git
+RUN apk update && apk upgrade && apk add --no-cache git
 
-# COPY package.json tsconfig.json $PROJECT_ROOTDIR
+COPY package.json tsconfig.json $PROJECT_ROOTDIR
 
-# RUN npm install
+RUN npm install
 
 COPY . $PROJECT_ROOTDIR
 
-EXPOSE 3000
+EXPOSE 4000
 
 # CMD ["yarn", "start"]
