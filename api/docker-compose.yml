@@ -9,6 +9,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     restart: always
+    networks:
+      - external
   redis:
     image: redis
     ports:
@@ -30,7 +32,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     tty: true
+    networks:
+      - external
 
 volumes:
   redis:
   postgres_volume:
+
+networks:
+  external:
+    external: true
