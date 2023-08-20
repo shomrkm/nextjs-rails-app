@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :users
   resources :events
 
-  post 'auth/:provider/callback', to: 'users#create'
-  delete 'users/:email', to: 'users#destroy', constraints: { email: %r{[^/]+} }
+  get 'sessions', action: :show, controller: 'sessions'
+  # get 'auth/:provider/callback', to: 'sessions#create'
+  # get 'auth/failure', to: redirect('/')
+  # get 'log_out', to: 'sessions#destroy', as: 'log_out'
+
+  # resources :sessions, only: %i[create destroy]
 end
