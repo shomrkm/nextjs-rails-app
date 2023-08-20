@@ -12,6 +12,6 @@ RUN npm install
 
 COPY . $PROJECT_ROOTDIR
 
-EXPOSE 4000
+EXPOSE 3000
 
 # CMD ["yarn", "start"]

@@ -2,19 +2,16 @@
 
 import React from "react";
 import { DeleteUser } from "./components/Header/DeleteUser/DeleteUser";
-import axios from "axios";
+import axios from "@/lib/axios/axios";
 
+// debug
 const TestButton = () => {
   const handleClick = async () => {
     try {
+      await axios.get("http://127.0.0.1:3010/sessions");
+
       const response = await axios.post(
-        `http://127.0.0.1:3000/auth/:provider/callback`,
-        {
-          provider: "google",
-          uid: "116727722188696075203",
-          name: "村上翔太朗",
-          email: "shochan1985@gmail.com",
-        }
+        `http://127.0.0.1:3010/auth/google_oauth2`
       );
 
       console.log("=======OK===========");

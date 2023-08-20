@@ -23,7 +23,7 @@ services:
     volumes:
       - .:/api
     ports:
-      - "3000:3000"
+      - "3010:3010"
     depends_on:
       - db
       - redis
