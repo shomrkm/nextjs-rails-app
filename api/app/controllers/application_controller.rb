@@ -7,8 +7,7 @@ class ApplicationController < ActionController::API
 
   def set_csrf_token
     cookies['CSRF-TOKEN'] = {
-      # TODO: ドメインをセットすると Cookie にセットされない
-      # domain: 'http://localhost:3000',
+      domain: 'localhost',
       value: form_authenticity_token,
       # secure: true,
       # same_site: :none,
