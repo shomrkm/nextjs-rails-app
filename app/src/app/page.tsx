@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "@/lib/axios/axios";
+import { getSession } from "@/services/server/Sessions";
+import { getEvents } from "@/services/server/Events";
 
 type Event = {
   id: string | null;
@@ -10,26 +11,9 @@ type Event = {
   content: string;
 };
 
-async function getSession() {
-  try {
-    await axios.get(`/sessions`);
-  } catch (err) {
-    throw Error("Failed to getSession");
-  }
-}
-
-async function getData() {
-  const res = (await axios.get(`/events`)) as any;
-  if (!res.status) {
-    throw Error("Failed to fetch data");
-  }
-
-  return res.data;
-}
-
 export default async function Home() {
   await getSession();
-  const events: Event[] = await getData();
+  const events: Event[] = await getEvents();
 
   return (
     <main className="flex-col min-h-screen w-max">
