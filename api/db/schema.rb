@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_003207) do
     t.string "name", null: false
     t.string "place", null: false
     t.datetime "start_at", null: false
-    t.datetime "ent_at", null: false
+    t.datetime "end_at", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
