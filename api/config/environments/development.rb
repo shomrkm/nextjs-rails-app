@@ -53,6 +53,10 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  # Needed for Next.js's getServerSideProps
+  # In the development environment, "api" is the hostname when the Rail API is launched as a Docker container.
+  config.hosts << "api"
+
   # config.action_controller.forgery_protection_origin_check = false
 
 
