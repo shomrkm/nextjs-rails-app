@@ -7,10 +7,14 @@ class SessionsController < ApplicationController
 
     def google_auth
       # Googleからの認証データを取得
-      access_token = request.env['omniauth.auth']
+      auth_hash = request.env['omniauth.auth']
+      if (user = User.find_or_create_from_auth_hash(auth_hash))
+        binding.irb
+        log_in user
+      end
 
-      ## ToDo: 認証完了後のページへリダイレクトする
-      render json: {}, status: :ok
+      # TODO: uid (user id) を jwt で Cookie にセットする？
+      redirect_to "#{Rails.application.credentials.frontend[:domain]}"
 
       # user = User.from_omniauth(access_token)
 
