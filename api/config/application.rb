@@ -1,4 +1,5 @@
 require_relative "boot"
+# require_relative "../lib/custom_middleware"
 
 require "rails"
 # Pick the frameworks you want:
@@ -28,8 +29,22 @@ module Api
     # For OmniAuth
     # config.session_store :cookie_store, key: '_interslice_session'
 
+
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
+
+    # デバック用
+    # config.middleware.use CustomMiddleware
+
+    Rails.application.config.middleware.use OmniAuth::Builder do
+      provider :google_oauth2, 
+               Rails.application.credentials.google[:client_id],
+               Rails.application.credentials.google[:client_secret],
+               skip_jwt: true
+    end
+
+    # クライアント側とドメインが異なる場合、クロスオリジンの検証を無効にする
+    config.action_controller.forgery_protection_origin_check = false
   end
 end

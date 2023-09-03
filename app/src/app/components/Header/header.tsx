@@ -2,8 +2,7 @@
 
 import React from "react";
 import { Heading } from "./Heading/haeding";
-import { LoginButton, LogoutButton } from "./Buttons/buttons";
-import Image from "next/image";
+import { GoogleAuthButton } from "./Buttons/GoogleAuthButton";
 
 export const Header = () => {
   return (
@@ -19,9 +18,8 @@ export const Header = () => {
               width={40}
               height={40}
             /> */}
-          <LogoutButton />
         </div>
-        {/* <LoginButton /> */}
+        <GoogleAuthButton />
       </div>
     </header>
   );

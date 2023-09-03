@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { getSession } from "@/services/server/Sessions";
 import { getEvents } from "@/services/server/Events";
+import { addEvent } from "@/services/server/Events/addEvent";
+import {
+  PostTestButton,
+  ReloadTestButton,
+} from "./components/Header/Buttons/buttons";
 
 type Event = {
   id: string | null;
