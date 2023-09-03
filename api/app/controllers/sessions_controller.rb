@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
       # Googleからの認証データを取得
       auth_hash = request.env['omniauth.auth']
       if (user = User.find_or_create_from_auth_hash(auth_hash))
-        binding.irb
         log_in user
       end
 
