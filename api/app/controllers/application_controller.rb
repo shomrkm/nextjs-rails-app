@@ -1,23 +1,35 @@
+require_relative '../../lib/jwt_handler'
+
 class ApplicationController < ActionController::API
   include ActionController::Cookies
   include ActionController::RequestForgeryProtection
-  include SessionsHelper
 
   protect_from_forgery with: :exception
-  # before_action :check_logged_in
 
   def set_csrf_token
     cookies['CSRF-TOKEN'] = {
-      domain: 'localhost',
+      domain: Rails.env.production? ? 'production_domain.com' : 'localhost',
       value: form_authenticity_token,
-      # secure: true,
-      # same_site: :none,
+      secure: Rails.env.production?
     }
   end
-  
-  # def check_logged_in
-  #   return if current_user
 
-  #   redirect_to root_path
-  # end
+  def set_user_token(email)
+    token = JwtHandler.encode({ email: email })
+    cookies['token'] = {
+      domain: Rails.env.production? ? 'production_domain.com' : 'localhost',
+      value: token,
+      # httponly: true,
+      # same_site: none,
+      secure: Rails.env.production?
+    }
+  end
+
+  def get_user_token
+    token= request.headers['Authorization']&.split('Bearer ')&.last
+    return nil unless token
+
+    JwtHandler.decode(token)
+  end
+  
 end
