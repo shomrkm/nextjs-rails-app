@@ -9,7 +9,6 @@ class JwtHandler
 
   def self.decode(token)
     decoded = JWT.decode(token, SECRET_KEY)[0]
-    binding.b
     HashWithIndifferentAccess.new decoded
   end
 end
