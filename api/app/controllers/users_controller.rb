@@ -23,4 +23,9 @@ class UsersController < ApplicationController
     render json: { error: e.message }, status: :internal_server_error
   end
 
+  def me
+    render json: { error: 'Unauthorized' }, status: :unauthorized unless current_user
+    render json: current_user, status: :ok
+  end
+
 end
