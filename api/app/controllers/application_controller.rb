@@ -25,6 +25,22 @@ class ApplicationController < ActionController::API
     }
   end
 
+  def current_user
+    @current_user ||= get_current_user
+  end
+
+  private
+
+  def get_current_user
+    token = get_user_token
+    return nil unless token
+      
+    user = User.find_by(email: token)
+    return nil unless user
+  
+    user
+  end
+
   def get_user_token
     token = request.headers['Authorization']&.split('Bearer ')&.last
     return nil unless token
@@ -34,5 +50,5 @@ class ApplicationController < ActionController::API
 
     decoded_token['email']
   end
-  
-end
+end  
+
