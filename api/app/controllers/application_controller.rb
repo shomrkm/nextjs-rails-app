@@ -26,10 +26,13 @@ class ApplicationController < ActionController::API
   end
 
   def get_user_token
-    token= request.headers['Authorization']&.split('Bearer ')&.last
+    token = request.headers['Authorization']&.split('Bearer ')&.last
     return nil unless token
 
-    JwtHandler.decode(token)
+    decoded_token = JwtHandler.decode(token)
+    return nil unless decoded_token['email']
+
+    decoded_token['email']
   end
   
 end
