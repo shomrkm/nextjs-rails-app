@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
     if current_user
-      events = Event.where(owner_id: current_user.id)
+      events = current_user.events
       events = [] unless events
       render json: events, status: :ok
     else
