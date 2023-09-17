@@ -9,8 +9,8 @@ type FormValues = {
   name: string;
   place: string;
   startTime: string;
-  endTime: string;
-  content: string;
+  endTime: Date;
+  content: Date;
 };
 
 const schema = z.object({
@@ -26,6 +26,7 @@ export const CreateEventForm = () => {
     <Form<FormValues, typeof schema>
       id="create-event-form"
       onSubmit={(value) => {
+        // TODO:リクエストを送る
         console.log(value);
       }}
       schema={schema}
@@ -57,7 +58,7 @@ export const CreateEventForm = () => {
           <TextareaField label="Content" registration={register("content")} />
           <div>
             <Button type="submit" form="create-event-form" className="w-full">
-              Submit
+              Create Event
             </Button>
           </div>
         </>
