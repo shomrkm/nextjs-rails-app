@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { getSession } from "@/services/server/Sessions";
 import { getEvents } from "@/services/server/Events";
+import { getMe } from "@/services/server/Users";
 
 type Event = {
   id: string | null;
@@ -13,6 +14,7 @@ type Event = {
 
 export default async function Home() {
   await getSession();
+  await getMe();
   const events: Event[] = await getEvents();
 
   return (

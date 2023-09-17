@@ -1,3 +1,5 @@
+"use client";
+
 import { getSession } from "@/services/server/Sessions";
 import React from "react";
 
