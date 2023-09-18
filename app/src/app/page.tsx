@@ -2,15 +2,7 @@ import React from "react";
 import { getSession } from "@/services/server/Sessions";
 import { getEvents } from "@/services/server/Events";
 import { getMe } from "@/services/server/Users";
-
-type Event = {
-  id: string | null;
-  name: string;
-  place: string;
-  start_at: string;
-  end_at: string;
-  content: string;
-};
+import { Event } from "@/types/events";
 
 export default async function Home() {
   await getSession();
