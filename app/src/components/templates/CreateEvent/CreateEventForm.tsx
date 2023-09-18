@@ -1,6 +1,11 @@
 "use client";
 
-import { DateField, Form, InputField, TextareaField } from "@/components/Form";
+import {
+  DateField,
+  Form,
+  InputField,
+  TextareaField,
+} from "@/components/organisms/Form";
 import { Button } from "@/components/atoms/Button";
 import { addEvent } from "@/services/client/Events/addEvent";
 import React from "react";

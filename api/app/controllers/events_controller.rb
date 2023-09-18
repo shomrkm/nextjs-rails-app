@@ -10,6 +10,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    @event = Event.find(params[:id])
+    if @event
+      render json: @event.as_json(include: :owner)
+    else
+      render json: { errors: ["Book with the specified ID (#{params[id]}) was not found."] }, status: :not_found
+    end
+  end
+
   def new
     @event = current.user.created_events.build
   end

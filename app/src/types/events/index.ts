@@ -1,3 +1,5 @@
+import { User } from "../users";
+
 export type Event = {
   id: string | null;
   name: string;
@@ -5,4 +7,5 @@ export type Event = {
   start_at: string;
   end_at: string;
   content: string;
+  owner: User;
 };
