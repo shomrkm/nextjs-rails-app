@@ -26,15 +26,11 @@ module Api
     config.time_zone = "Tokyo"
     config.api_only = true
 
-    # For OmniAuth
-    # config.session_store :cookie_store, key: '_interslice_session'
-
-
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
 
-    # デバック用
+    # For Debugging
     # config.middleware.use CustomMiddleware
 
     Rails.application.config.middleware.use OmniAuth::Builder do
@@ -44,7 +40,7 @@ module Api
                skip_jwt: true
     end
 
-    # クライアント側とドメインが異なる場合、クロスオリジンの検証を無効にする
+    # Disable cross-origin validation when the domain is different from the client side
     config.action_controller.forgery_protection_origin_check = false
   end
 end
