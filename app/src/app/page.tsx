@@ -1,20 +1,17 @@
-import React from "react";
-import { getSession } from "@/services/server/Sessions";
-import { getEvents } from "@/services/server/Events";
 import { getMe } from "@/services/server/Users";
-import { Event } from "@/types/events";
+import Link from "next/link";
+import React from "react";
 
-export default async function Home() {
-  await getSession();
-  await getMe();
-  const events: Event[] = await getEvents();
+export default async function Page() {
+  const me = await getMe();
+  const name = me?.name ?? "Anonymous";
 
   return (
-    <main className="flex-col min-h-screen w-max">
-      <h1 className="text-4xl mb-4">Events</h1>
-      {events.map((ev) => (
-        <li key={ev.id}>{ev.name}</li>
-      ))}
-    </main>
+    <>
+      <h1 className="text-4xl mb-4">{`Hello ${name}`}</h1>
+      <Link href="events" className="text-gray-700 text-xl">
+        → Your Events
+      </Link>
+    </>
   );
 }
