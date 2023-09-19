@@ -11,7 +11,6 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const event = await getEvent(params.id);
-  console.log(event);
 
   return (
     <main className="flex-col min-h-screen w-max">
