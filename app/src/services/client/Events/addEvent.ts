@@ -2,7 +2,7 @@ import axios from "@/lib/axios/axios";
 import { Event } from "@/types/events";
 import { buildAuthorizationHeader } from "../util";
 
-export async function addEvent(values: Omit<Event, "id">) {
+export async function addEvent(values: Omit<Event, "id" | "owner">) {
   const res = (await axios.post(
     `/events`,
     { ...values },
