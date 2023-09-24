@@ -47,6 +47,7 @@ export const CreateEventForm = () => {
       id="create-event-form"
       onSubmit={handleSubmit}
       schema={schema}
+      className="w-[700px]"
     >
       {({ register, formState }) => (
         <>
@@ -60,18 +61,22 @@ export const CreateEventForm = () => {
             error={formState.errors["place"]}
             registration={register("place")}
           />
-          <DateField
-            type="datetime-local"
-            label="Start Time"
-            error={formState.errors["startAt"]}
-            registration={register("startAt")}
-          />
-          <DateField
-            type="datetime-local"
-            label="End Time"
-            error={formState.errors["endAt"]}
-            registration={register("endAt")}
-          />
+          <div className="flex justify-between w-full">
+            <DateField
+              type="datetime-local"
+              label="Start Time"
+              error={formState.errors["startAt"]}
+              registration={register("startAt")}
+              className="w-[330px]"
+            />
+            <DateField
+              type="datetime-local"
+              label="End Time"
+              error={formState.errors["endAt"]}
+              registration={register("endAt")}
+              className="w-[330px]"
+            />
+          </div>
           <TextareaField label="Content" registration={register("content")} />
           <div>
             <Button type="submit" form="create-event-form" className="w-full">
