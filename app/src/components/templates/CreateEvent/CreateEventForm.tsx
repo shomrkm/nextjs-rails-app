@@ -10,6 +10,7 @@ import { Button } from "@/components/atoms/Button";
 import { addEvent } from "@/services/client/Events/addEvent";
 import React from "react";
 import z from "zod";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   name: string;
@@ -28,18 +29,23 @@ const schema = z.object({
 });
 
 export const CreateEventForm = () => {
+  const router = useRouter();
+
+  const handleSubmit = async (value: FormValues) => {
+    await addEvent({
+      name: value.name,
+      place: value.place,
+      start_at: value.startAt,
+      end_at: value.endAt,
+      content: value.content,
+    });
+    router.push("/events");
+  };
+
   return (
     <Form<FormValues, typeof schema>
       id="create-event-form"
-      onSubmit={async (value) => {
-        await addEvent({
-          name: value.name,
-          place: value.place,
-          start_at: value.startAt,
-          end_at: value.endAt,
-          content: value.content,
-        });
-      }}
+      onSubmit={handleSubmit}
       schema={schema}
     >
       {({ register, formState }) => (
