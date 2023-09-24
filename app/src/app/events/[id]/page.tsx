@@ -1,7 +1,7 @@
 import { getEvent } from "@/services/server/Events/getEvent";
 import React from "react";
-import dayjs from "dayjs";
 import Image from "next/image";
+import { makeStartEndDateString } from "@/utils/makeStartEndDateString";
 
 type Props = {
   params: {
@@ -43,9 +43,3 @@ export default async function Page({ params }: Props) {
     </main>
   );
 }
-
-const makeStartEndDateString = (startAt: string, endAt: string) => {
-  const start = dayjs(startAt).format("YYYY/MM/DD HH:mm");
-  const end = dayjs(endAt).format("YYYY/MM/DD HH:mm");
-  return `${start} - ${end}`;
-};
