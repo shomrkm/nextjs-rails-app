@@ -33,6 +33,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = current_user.created_events.find(params[:id])
+    if @event.destroy!
+      render json: @event, status: :ok
+    else
+      render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def event_params
