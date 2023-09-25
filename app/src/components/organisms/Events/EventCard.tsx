@@ -3,7 +3,7 @@ import { Event } from "@/types/events";
 import { makeStartEndDateString } from "@/utils/makeStartEndDateString";
 import Link from "next/link";
 import { EditEventButton } from "./EditEventButton";
-import { DeleteEventButton } from "./DeleteEventButton";
+import { DeleteEvent } from "./DeleteEvent";
 
 type Props = {
   event: Event;
@@ -22,7 +22,7 @@ export const EventCard: FC<Props> = ({ event }: Props) => {
       </Link>
       <div className="flex space-x-2 ml-4 h-8">
         <EditEventButton />
-        <DeleteEventButton eventId={event.id!} />
+        <DeleteEvent eventId={event.id!} />
       </div>
     </div>
   );
