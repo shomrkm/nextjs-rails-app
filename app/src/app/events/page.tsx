@@ -4,7 +4,7 @@ import { getEvents } from "@/services/server/Events";
 import { getMe } from "@/services/server/Users";
 import { Event } from "@/types/events";
 import { AddEventButton } from "../../components/templates/Events/AddEventButton";
-import { EventCard } from "@/components/organisms/Events/EventCard";
+import { EventCard } from "@/components/organisms/Events";
 
 export default async function Home() {
   await getSession();

@@ -6,7 +6,7 @@ import { useDisclosure } from "@/hooks/useDisclosure";
 import { deleteEvent } from "@/services/client/Events/deleteEvent";
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
-import { Dialog, DialogTitle } from "@/components/molecules/Dialog/Dialog";
+import { Dialog, DialogTitle } from "@/components/molecules/Dialog";
 
 type ConfirmDialogProps = {
   isOpen: boolean;
