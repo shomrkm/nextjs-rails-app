@@ -11,9 +11,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.eager_load([:tickets, { tickets: :user}]).find(params[:id])
     if @event
-      render json: @event.as_json(include: :owner)
+      render json: @event.as_json(include: [:owner, 
+        tickets: {
+          include: :user
+        }])
     else
       render json: { errors: ["Book with the specified ID (#{params[id]}) was not found."] }, status: :not_found
     end

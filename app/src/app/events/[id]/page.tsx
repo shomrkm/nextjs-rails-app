@@ -2,6 +2,7 @@ import { getEvent } from "@/services/server/Events/getEvent";
 import React from "react";
 import Image from "next/image";
 import { makeStartEndDateString } from "@/utils/makeStartEndDateString";
+import { JoinEventButton } from "@/components/templates/Events/JoinEventButton";
 
 type Props = {
   params: {
@@ -38,6 +39,17 @@ export default async function Page({ params }: Props) {
             height={30}
           />
           <p className="text-gray-600">{event.owner.name}</p>
+        </div>
+      </div>
+      <div className="m-4">
+        <div className="flex items-center text-center">
+          <h2 className="text-2xl mr-8">Join Members</h2>
+          <JoinEventButton eventId={event.id!} />
+        </div>
+        <div>
+          {event.tickets.map((t) => (
+            <li key={t.id}>{`${t.comment} (${t.user.name})`}</li>
+          ))}
         </div>
       </div>
     </main>

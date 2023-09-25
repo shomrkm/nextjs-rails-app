@@ -1,3 +1,4 @@
+import { Ticket } from "../tickets";
 import { User } from "../users";
 
 export type Event = {
@@ -8,4 +9,5 @@ export type Event = {
   end_at: string;
   content: string;
   owner: User;
+  tickets: Ticket[];
 };
