@@ -10,8 +10,13 @@ export default async function Page() {
     <>
       <h1 className="text-4xl mb-4">{`Hello ${name}`}</h1>
       <Link href="events" className="text-gray-700 text-xl">
-        → Your Events
+        <li>All Events</li>
       </Link>
+      {me && (
+        <Link href="events/me" className="text-gray-700 text-xl">
+          <li>Your Events</li>
+        </Link>
+      )}
     </>
   );
 }

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'users/me', to: 'users#me'
   resources :users
   resources :events do
+    collection do
+      get :my_events
+    end
     resources :tickets
   end
 

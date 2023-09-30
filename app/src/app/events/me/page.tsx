@@ -1,13 +1,13 @@
 import React from "react";
 import { getSession } from "@/services/server/Sessions";
-import { getEvents } from "@/services/server/Events";
+import { getMyEvents } from "@/services/server/Events";
 import { Event } from "@/types/events";
-import { AddEventButton } from "../../components/templates/Events/AddEventButton";
+import { AddEventButton } from "@/components/templates/Events/AddEventButton";
 import { EventCard } from "@/components/organisms/Events";
 
 export default async function Home() {
   await getSession();
-  const events: Event[] = await getEvents();
+  const events: Event[] = await getMyEvents();
 
   return (
     <main className="flex-col min-h-screen w-max">
