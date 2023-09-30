@@ -5,7 +5,7 @@ export async function createTicket({
   eventId,
   comment,
 }: {
-  eventId: string;
+  eventId: number;
   comment: string;
 }) {
   const res = (await axios.post(

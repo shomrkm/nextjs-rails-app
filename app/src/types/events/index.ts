@@ -2,7 +2,7 @@ import { Ticket } from "../tickets";
 import { User } from "../users";
 
 export type Event = {
-  id: string | null;
+  id: number | null;
   name: string;
   place: string;
   start_at: string;

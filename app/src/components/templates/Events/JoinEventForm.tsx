@@ -8,7 +8,7 @@ import { FC } from "react";
 import { z } from "zod";
 
 type Props = {
-  eventId: string;
+  eventId: number;
 };
 
 type FormValues = {

@@ -1,8 +1,10 @@
 import { getEvent } from "@/services/server/Events";
-import React from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
 import { makeStartEndDateString } from "@/utils/makeStartEndDateString";
 import { JoinEventForm } from "@/components/templates/Events/JoinEventForm";
+import { getMe } from "@/services/server/Users";
+import { CancelEventButton } from "@/components/templates/Events/CancelEventButton";
 
 type Props = {
   params: {
@@ -12,6 +14,9 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const event = await getEvent(params.id);
+
+  const me = await getMe();
+  const joinedTicket = me && event.tickets.find((t) => t.user.id === me.id);
 
   return (
     <main className="flex-col min-h-screen w-max">
@@ -49,7 +54,14 @@ export default async function Page({ params }: Props) {
       <div className="m-4">
         <div className="flex items-center text-center">
           <h2 className="text-2xl mr-8">Join Members</h2>
-          <JoinEventForm eventId={event.id!} />
+          {joinedTicket ? (
+            <CancelEventButton
+              eventId={joinedTicket.event_id}
+              ticketId={joinedTicket.id!}
+            />
+          ) : (
+            <JoinEventForm eventId={event.id!} />
+          )}
         </div>
         <div className="mt-4">
           {event.tickets.map((t) => (

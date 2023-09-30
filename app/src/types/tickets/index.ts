@@ -1,8 +1,9 @@
+import { Event } from "../events";
 import { User } from "../users";
 
 export type Ticket = {
-  id: string | null;
+  id: number | null;
   user: User;
-  event: Event;
+  event_id: number;
   comment: string;
 };
