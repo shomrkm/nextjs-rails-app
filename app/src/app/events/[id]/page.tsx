@@ -30,16 +30,20 @@ export default async function Page({ params }: Props) {
       </div>
       <div className="mb-8 mt-4 mx-4">
         <h2 className="text-2xl mb-2">Owner</h2>
-        <div className="flex justify-start items-center">
-          <Image
-            className="rounded-full mr-2"
-            src={event.owner.image_url}
-            alt=""
-            width={30}
-            height={30}
-          />
-          <p className="text-gray-600">{event.owner.name}</p>
-        </div>
+        {event.owner ? (
+          <div className="flex justify-start items-center">
+            <Image
+              className="rounded-full mr-2"
+              src={event.owner.image_url}
+              alt=""
+              width={30}
+              height={30}
+            />
+            <p className="text-gray-600">{event.owner.name}</p>
+          </div>
+        ) : (
+          <p className="text-gray-600">Anonymous</p>
+        )}
       </div>
       <div className="border border-solid border-gray-400 border-" />
       <div className="m-4">
