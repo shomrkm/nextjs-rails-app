@@ -1,4 +1,4 @@
-import { getEvent } from "@/services/server/Events/getEvent";
+import { getEvent } from "@/services/server/Events";
 import React from "react";
 import Image from "next/image";
 import { makeStartEndDateString } from "@/utils/makeStartEndDateString";
