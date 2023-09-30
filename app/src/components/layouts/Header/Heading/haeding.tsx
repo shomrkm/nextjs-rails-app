@@ -10,7 +10,7 @@ export const Heading = () => {
           <span className="flex justify-center w-12 h-12 mr-4 bg-transparent">
             <PuzzlePieceIcon className="text-green-500" />
           </span>
-          Test App
+          Awesome Events
         </a>
       </Link>
     </h1>
