@@ -16,7 +16,7 @@ export default async function Home() {
         <AddEventButton />
       </div>
       {events.map((ev) => (
-        <EventCard key={ev.id} event={ev} />
+        <EventCard key={ev.id} event={ev} canUpdate />
       ))}
     </main>
   );

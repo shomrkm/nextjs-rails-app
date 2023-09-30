@@ -7,9 +7,10 @@ import { DeleteEvent } from "./DeleteEvent";
 
 type Props = {
   event: Event;
+  canUpdate?: boolean;
 };
 
-export const EventCard: FC<Props> = ({ event }: Props) => {
+export const EventCard: FC<Props> = ({ event, canUpdate = false }: Props) => {
   return (
     <div className="flex justify-between items-center border border-solid border-gray-400 rounded-md p-2 my-2 hover:bg-blue-100">
       <Link href={`/events/${event.id}`}>
@@ -20,10 +21,12 @@ export const EventCard: FC<Props> = ({ event }: Props) => {
           </div>
         </div>
       </Link>
-      <div className="flex space-x-2 ml-4 h-8">
-        <EditEventButton />
-        <DeleteEvent eventId={event.id!} />
-      </div>
+      {canUpdate && (
+        <div className="flex space-x-2 ml-4 h-8">
+          <EditEventButton />
+          <DeleteEvent eventId={event.id!} />
+        </div>
+      )}
     </div>
   );
 };
