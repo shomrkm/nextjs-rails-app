@@ -7,8 +7,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email, null: false
       t.string :image_url
 
-      t.datetime "created_at", null: false
-      t.datetime "updated_at", null: false
+      t.datetime 'created_at', null: false
+      t.datetime 'updated_at', null: false
 
       # add_index :users, [:provider, :uid], unique: true
     end

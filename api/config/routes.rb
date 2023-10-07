@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     collection do
       get :my_events
     end
-    resources :tickets, only: %i(create destroy)
+    resources :tickets, only: %i[create destroy]
   end
-
 end

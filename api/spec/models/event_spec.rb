@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   describe 'validations' do
     let(:user) { create(:user) }
-    let(:ticket) { create(:ticket)}
+    let(:ticket) { create(:ticket) }
     let(:event) { build(:event, owner: user, tickets: [ticket]) }
 
     it 'is valid with valid attributes' do
@@ -54,7 +54,7 @@ RSpec.describe Event, type: :model do
       event.start_at = Time.current + 1.day
       event.end_at = Time.current
       expect(event).to_not be_valid
-      expect(event.errors[:start_at]).to include("must be set before the end time")
+      expect(event.errors[:start_at]).to include('must be set before the end time')
     end
   end
 end

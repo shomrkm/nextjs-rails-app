@@ -6,17 +6,17 @@ class EventsController < ApplicationController
 
   def my_events
     events = current_user.created_events
-    events = [] unless events
+    events ||= []
     render json: events, status: :ok
   end
 
   def show
-    @event = Event.eager_load([:tickets, { tickets: :user}]).find(params[:id])
+    @event = Event.eager_load([:tickets, { tickets: :user }]).find(params[:id])
     if @event
-      render json: @event.as_json(include: [:owner, 
-        tickets: {
-          include: :user
-        }])
+      render json: @event.as_json(include: [:owner,
+                                            { tickets: {
+                                              include: :user
+                                            } }])
     else
       render json: { errors: ["Book with the specified ID (#{params[id]}) was not found."] }, status: :not_found
     end
@@ -50,5 +50,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :place, :start_at, :end_at, :content)
   end
-  
 end

@@ -2,7 +2,8 @@
 
 class UsersController < ApplicationController
   def create
-    user = User.find_or_create_by(provider: params[:provider], uid: params[:uid], name: params[:name], email: params[:email])
+    user = User.find_or_create_by(provider: params[:provider], uid: params[:uid], name: params[:name],
+                                  email: params[:email])
     if user
       head :ok
     else
@@ -27,5 +28,4 @@ class UsersController < ApplicationController
     render json: { error: 'Unauthorized' }, status: :unauthorized unless current_user
     render json: current_user, status: :ok
   end
-
 end

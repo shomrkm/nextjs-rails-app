@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
   end
 
   def set_user_token(email)
-    token = JwtHandler.encode({ email: email })
+    token = JwtHandler.encode({ email: })
     cookies['token'] = {
       domain: Rails.env.production? ? 'production_domain.com' : 'localhost',
       value: token,
@@ -34,10 +34,10 @@ class ApplicationController < ActionController::API
   def get_current_user
     token = get_user_token
     return nil unless token
-      
+
     user = User.find_by(email: token)
     return nil unless user
-  
+
     user
   end
 
@@ -50,5 +50,4 @@ class ApplicationController < ActionController::API
 
     decoded_token['email']
   end
-end  
-
+end

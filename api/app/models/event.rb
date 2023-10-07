@@ -1,21 +1,21 @@
 class Event < ApplicationRecord
-    has_many :tickets
-    belongs_to :owner, class_name: "User"
+  has_many :tickets
+  belongs_to :owner, class_name: 'User'
 
-    validates :name, length: { maximum: 50 }, presence: true
-    validates :place, length: { maximum: 100 }, presence: true
-    validates :content, length: { maximum: 2000 }, presence: true
-    validates :start_at, presence: true
-    validates :end_at, presence: true
-    validate :start_at_should_be_before_end_at
+  validates :name, length: { maximum: 50 }, presence: true
+  validates :place, length: { maximum: 100 }, presence: true
+  validates :content, length: { maximum: 2000 }, presence: true
+  validates :start_at, presence: true
+  validates :end_at, presence: true
+  validate :start_at_should_be_before_end_at
 
-    private
-    
-    def start_at_should_be_before_end_at
-        return unless start_at && end_at
+  private
 
-        if start_at >= end_at
-            errors.add(:start_at, "must be set before the end time")
-        end
-    end
+  def start_at_should_be_before_end_at
+    return unless start_at && end_at
+
+    return unless start_at >= end_at
+
+    errors.add(:start_at, 'must be set before the end time')
+  end
 end

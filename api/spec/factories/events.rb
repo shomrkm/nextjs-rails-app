@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :event do
     owner
-    sequence(:name) { |i| "Event Name #{i}"}
-    sequence(:place) { |i| "Place #{i}"}
-    sequence(:content) { |i| "Content #{i}"}
+    sequence(:name) { |i| "Event Name #{i}" }
+    sequence(:place) { |i| "Place #{i}" }
+    sequence(:content) { |i| "Content #{i}" }
     start_at { rand(1..30).days.from_now }
     end_at { start_at + rand(1..30).hours }
   end
