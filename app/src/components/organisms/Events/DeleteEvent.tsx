@@ -8,10 +8,10 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { ConfirmationDialog } from "../ConfirmationDialog";
 
-export const DeleteEvent: FC<{ eventId: string }> = ({
+export const DeleteEvent: FC<{ eventId: number }> = ({
   eventId,
 }: {
-  eventId: string;
+  eventId: number;
 }) => {
   const router = useRouter();
   const { close, open, isOpen } = useDisclosure();

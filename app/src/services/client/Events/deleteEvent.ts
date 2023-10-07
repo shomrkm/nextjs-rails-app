@@ -1,7 +1,7 @@
 import axios from "@/lib/axios/axios";
 import { buildAuthorizationHeader } from "../util";
 
-export async function deleteEvent(id: string) {
+export async function deleteEvent(id: number) {
   const res = (await axios.delete(`/events/${id}`, {
     headers: buildAuthorizationHeader(),
   })) as any;
