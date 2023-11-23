@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  post "/graphql", to: "graphql#execute"
   get 'sessions', action: :show, controller: 'sessions'
   get 'auth/google_oauth2/callback', to: 'sessions#google_auth'
   delete 'logout', to: 'sessions#logout'

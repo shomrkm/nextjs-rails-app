@@ -88,6 +88,8 @@ GEM
     faraday-net_http (3.0.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    graphql (2.1.5)
+      racc (~> 1.4)
     hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -223,6 +225,7 @@ DEPENDENCIES
   bootsnap
   debug
   factory_bot_rails
+  graphql (~> 2.1)
   jwt
   omniauth
   omniauth-google-oauth2
