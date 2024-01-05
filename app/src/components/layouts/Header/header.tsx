@@ -15,7 +15,7 @@ export const Header = async () => {
         {me ? (
           <>
             <div className="flex justify-end items-center">
-              <p className="text-gray-600">{me.email}</p>
+              <p className="text-gray-600 hidden md:inline">{me.email}</p>
               <Image
                 className="rounded-full mx-4"
                 src={me.image_url}

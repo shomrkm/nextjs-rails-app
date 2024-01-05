@@ -9,7 +9,7 @@ export default async function Home() {
   const events: Event[] = await getEvents();
 
   return (
-    <main className="flex-col min-h-screen w-max">
+    <main className="flex-col min-h-screen w-max mx-4">
       <h1 className="text-4xl mr-8 mb-4">Events</h1>
       {events.map((ev) => (
         <EventCard key={ev.id} event={ev} />

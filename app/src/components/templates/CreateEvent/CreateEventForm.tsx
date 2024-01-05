@@ -47,7 +47,7 @@ export const CreateEventForm = () => {
       id="create-event-form"
       onSubmit={handleSubmit}
       schema={schema}
-      className="w-[700px]"
+      className="w-[400px]"
     >
       {({ register, formState }) => (
         <>

@@ -12,17 +12,17 @@ type Props = {
 
 export const EventCard: FC<Props> = ({ event, canUpdate = false }: Props) => {
   return (
-    <div className="flex justify-between items-center border border-solid border-gray-400 rounded-md p-2 my-2 hover:bg-blue-100">
+    <div className="flex-col justify-between items-center bg-gray-100 border border-solid border-gray-200 w-[300px] rounded-md p-4 my-2 overflow-hidden hover:bg-blue-100">
       <Link href={`/events/${event.id}`}>
         <div className="flex-col justyfy-center w-96">
-          <div className="truncate">{event.name}</div>
-          <div className="text-sm truncate text-gray-600">
+          <div className="truncate text-lg">{event.name}</div>
+          <div className="text-sm truncate text-gray-500">
             {makeStartEndDateString(event.start_at, event.end_at)}
           </div>
         </div>
       </Link>
       {canUpdate && (
-        <div className="flex space-x-2 ml-4 h-8">
+        <div className="flex space-x-2 mt-4">
           <EditEventButton />
           <DeleteEvent eventId={event.id!} />
         </div>
