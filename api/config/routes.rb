@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     end
     resources :tickets, only: %i[create destroy]
   end
+
+  resources :tasks
 end
