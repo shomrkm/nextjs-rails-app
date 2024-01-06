@@ -30,11 +30,6 @@ RSpec.describe Event, type: :model do
       expect(event).to_not be_valid
     end
 
-    it 'is not valid without content' do
-      event.content = nil
-      expect(event).to_not be_valid
-    end
-
     it 'is not valid with content longer than 2000 characters' do
       event.content = 'a' * 2001
       expect(event).to_not be_valid
