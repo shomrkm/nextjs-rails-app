@@ -1,6 +1,9 @@
+import { AxiosResponse as Response } from "axios";
+
 export const errors = {
   400: { message: "Invalid Request Error" },
   401: { message: "Unauthorized Error" },
+  403: { message: "Forbidden Error" },
   404: { message: "Not Found Error" },
   405: { message: "Method Not Allowed Error" },
   500: { message: "Internal Server Error" },
@@ -16,10 +19,12 @@ export type Err = { message: ErrorsMessage; status: ErrorStatus };
 export class HttpError extends Error {
   message: ErrorsMessage;
   status: ErrorStatus = 500;
-  constructor(status: ErrorStatus) {
+  response: Response;
+  constructor(status: ErrorStatus, response: Response) {
     super(errors[status].message);
     this.message = errors[status].message;
     this.status = status;
+    this.response = response;
   }
   serialize() {
     return { message: this.message, status: this.status };
@@ -27,31 +32,37 @@ export class HttpError extends Error {
 }
 
 export class BadRequestError extends HttpError {
-  constructor() {
-    super(400);
+  constructor(res: Response) {
+    super(400, res);
   }
 }
 
 export class UnauthorizedError extends HttpError {
-  constructor() {
-    super(401);
+  constructor(res: Response) {
+    super(401, res);
+  }
+}
+
+export class ForbiddenErrorError extends HttpError {
+  constructor(res: Response) {
+    super(403, res);
   }
 }
 
 export class NotFoundError extends HttpError {
-  constructor() {
-    super(404);
+  constructor(res: Response) {
+    super(404, res);
   }
 }
 
 export class MethodNotAllowedError extends HttpError {
-  constructor() {
-    super(405);
+  constructor(res: Response) {
+    super(405, res);
   }
 }
 
 export class InternalServerError extends HttpError {
-  constructor() {
-    super(500);
+  constructor(res: Response) {
+    super(500, res);
   }
 }

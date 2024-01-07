@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="ml-4 mt-24 relative">
+        <div className="ml-8 mt-24 relative">
           <Header />
           {children}
         </div>
