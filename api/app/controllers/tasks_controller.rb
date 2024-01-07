@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     tasks = Task.all
-    render json: tasks, status: :ok
+    render json: TaskSerializer.render_as_json(tasks), status: :ok
   end
 
   # GET /tasks/1
